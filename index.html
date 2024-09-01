@@ -16,7 +16,7 @@
 <body>
     <div class="header-section">
         <div class="header-left">
-            <button id="button" class="material-symbols-outlined">
+            <button id="buttonmenu" class="material-symbols-outlined">
                 <span>Menu</span>
             </button>
             <img src="./images/YouTube logo.png" alt="YouTube" class="youtube-logo">
@@ -31,13 +31,16 @@
             </button>
         </div>
         <div class="header-right">
+            <button id="Search-button" class="material-symbols-outlined displaythis">
+                <span>search</span>
+            </button>
             <button id="button" class="material-symbols-outlined">
                 <span>Upload</span>
             </button>
             <button id="button" class="material-symbols-outlined">
                 <span>notifications</span>
             </button>
-            <img src="./images/profile.jfif" alt="profile" class="profile-logo">
+            <img src="./images/profile.jfif" alt="profile" class="profile-logo displaythis">
         </div>
     </div>
     <div class="main">
@@ -93,10 +96,25 @@
                 <hr>
             </div>
         </div>
+        <div class="filters">
+            <button class="filter-options active">All</button>
+            <button class="filter-options">Css</button>
+            <button class="filter-options">Web Development</button>
+            <button class="filter-options">Html</button>
+            <button class="filter-options">Entertainment</button>
+            <button class="filter-options">Marvel</button>
+            <button class="filter-options">Javascript</button>
+            <button class="filter-options">Artificial Intelligence</button>
+            <button class="filter-options">Machine learning</button>
+            <button class="filter-options">Trending</button>
+            <button class="filter-options">Python</button>
+            <button class="filter-options">Music</button>
+            <button class="filter-options">tamil songs</button>
+            <button class="filter-options">Movies</button>
+        </div>
         <div class="videos">
-            <h2>Recommended</h2>
             <div class="videos-container">
-                <div class="video">
+                <!-- <div class="video">
                     <div class="video-thumbnail">
                         <img src="./images/pic1.webp" alt="pic1">
                     </div>
@@ -111,7 +129,6 @@
                                 2</h3>
                             <a href="">Vijay Television</a>
                             <span> 43K views &middot; 41 minutes ago</span>
-
                         </div>
                     </div>
                 </div>
@@ -291,10 +308,12 @@
                                 &middot; 8 days ago</span>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script src="./index.js"></script>
 </body>
 
 </html>
