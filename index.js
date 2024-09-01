@@ -1,10 +1,3 @@
-// const buttonmenu = document.querySelector("buttonmenu");
-
-// const sidebar = document.querySelector("sidebar");
-
-// buttonmenu.addEventListener("click", function () {
-//   sidebar.classList.toggle("show-sidear");
-// });
 const videoCardContainer = document.querySelector(".videos-container");
 
 let api_key = "AIzaSyBPreDQnNKcBVQ5mQ0elgdyQwAHFErdfLw";
@@ -17,18 +10,16 @@ fetch(
       key: api_key,
       part: "snippet",
       chart: "mostPopular",
-      maxResults: 1,
+      maxResults: 10, // Increase this value to fetch more videos
       regionCode: "IN",
     })
 )
   .then((res) => res.json())
   .then((data) => {
-    // console.log(data);
     data.items.forEach((item) => {
       getChannelIcon(item);
     });
   })
-
   .catch((err) => console.log(err));
 
 const getChannelIcon = (video_data) => {
@@ -42,30 +33,33 @@ const getChannelIcon = (video_data) => {
   )
     .then((res) => res.json())
     .then((data) => {
-      // console.log(data);
-      video_data.channelThumbnail =
-        data && data.items && [0].snippet.thumbnail.default.url;
+      if (data.items && data.items[0] && data.items[0].snippet && data.items[0].snippet.thumbnails) {
+        video_data.channelThumbnail = data.items[0].snippet.thumbnails.default.url;
+      } else {
+        video_data.channelThumbnail = "default-thumbnail.jpg";
+      }
       makeVideoCard(video_data);
-    });
+    })
+    .catch((err) => console.log(err));
 };
 
 const makeVideoCard = (data) => {
   videoCardContainer.innerHTML += `
     <div class="video">
       <div class="video-thumbnail" onclick="location.href = 'https://youtube.com/watch?v=${data.id}'">
-          <img src="${data.snippet.thumbnails.high.url}" alt="">
+          <img src="${data.snippet.thumbnails.high.url}" alt="Video Thumbnail">
       </div>
       <div class="video-details">
         <div class="author">
-            <img src="${data.channelThumbnail}" alt="">
+            <img src="${data.channelThumbnail}" alt="Channel Thumbnail">
        </div>
         <div class="title">
             <h3>${data.snippet.title}</h3>
-            <a href="">${data.snippet.channelTitle}</a>
+            <a href="#">${data.snippet.channelTitle}</a>
           </div>
         </div>
       </div>
-    </div> `;
+    </div>`;
 };
 
 const searchInput = document.querySelector(".search-bar");
